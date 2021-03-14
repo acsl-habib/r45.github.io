@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch postion</title>
+</head>
+<body>
+    <button id="start">Start Watch</button>
+    <button id="stop">Stop Watch</button>
+    <div id="output">
+
+    </div>
+    <script>
+        var watchId = null;
+        
+        document.getElementById('start').addEventListener('click', ()=>{
+            watchId = navigator.geolocation.watchPosition(pos=>{
+                document.getElementById(
+                                   "output"
+                              ).innerHTML = `Your current location: <br />
+                                            Longitude: ${position.coords.longitude}<br />
+                                            Latitude: ${position.coords.latitude}`;
+            }, err=>{}, {enableHighAccuracy:true})
+        }, false);
+        document.getElementById('stop').addEventListener('click', ()=>{
+            if(watchId == null) return;
+            navigator.geolocation.clearWatch(watchId);
+            watchId = null;
+
+}, false)
+    </script>
+</body>
+</html>

@@ -16,7 +16,7 @@
         var watchId = null;
         
         document.getElementById('start').addEventListener('click', ()=>{
-            watchId = navigator.geolocation.watchPosition(pos=>{
+            watchId = navigator.geolocation.watchPosition(position=>{
                 document.getElementById(
                                    "output"
                               ).innerHTML = `Your current location: <br />
